@@ -67,14 +67,14 @@ def crear():
 
 
 @app.route('/editar/matricula/<int:matricula_id>/', methods=('GET', 'POST'))
-def editar(docente_id):
-    matricula = Matricula.query.get_or_404(docente_id)
+def editar(matricula_id):
+    matricula = Matricula.query.get_or_404(matricula_id)
 
     if request.method == 'POST':
-        nombre_propietario = request.form['nombre']
-        placa_carro = request.form['placa']
-        anio_matricula = request.form['anio']
-        costo_matricula = request.form['costo']
+        nombre_propietario = request.form['nombre_propietario']
+        placa_carro = request.form['placa_carro']
+        anio_matricula = request.form['anio_matricula']
+        costo_matricula = request.form['costo_matricula']
 
 
         matricula.nombre_propietario = nombre_propietario
@@ -87,4 +87,4 @@ def editar(docente_id):
 
         return redirect(url_for('index'))
 
-    return render_template('editar.html', docente=matricula)
+    return render_template('editar.html', matricula=matricula)
